@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+
 def main():
     data = pd.read_csv(
         "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv",
@@ -23,9 +24,9 @@ def main():
     data.index = data.datum
     f, ax = plt.subplots(figsize=(10, 10))
     for land in current_lands:
-        data[data.country == land].value.plot(ax=ax, label=land)
+        data[data.country == land].value.plot(ax=ax, label=land, logy=True)
     # data[data.country == "Algeria"].value.plot(ax=ax, label="Algeria")
-
+    f.legend()
     st.pyplot(f)
 
 
