@@ -26,11 +26,14 @@ def main():
         data[data.country == land].value.plot(ax=ax, label=land, logy=True)
     # data[data.country == "Algeria"].value.plot(ax=ax, label="Algeria")
 
+    country_l = sorted(set(data.country))
+    country_l.append("None")
     for i in range(4):
         new_land = st.sidebar.selectbox(
-            f"Which other country {i}?", sorted(set(data.country))
+            f"Which other country {i}?", country_l, index=len(country_l) - 1
         )
-        data[data.country == new_land].value.plot(ax=ax, label=new_land, logy=True)
+        if not new_land is "None":
+            data[data.country == new_land].value.plot(ax=ax, label=new_land, logy=True)
 
     f.legend()
     st.pyplot(f)
