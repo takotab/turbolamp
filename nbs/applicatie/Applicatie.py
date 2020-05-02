@@ -32,14 +32,19 @@ def main():
     st.pyplot(f)
 
     if st.checkbox('Laat staafgrafiek zien'):
-            staafdiagram = pd.DataFrame(
-            data_Country = data[data['country'] == st.sidebar.selectbox("Welk land?", sorted(set(data.country))
-            data.index = data.datum
-            data_Country = data[data['country'] == current_land]
-            data_Country = data_Country[data_Country.index > pd.Timestamp(2020,3,1)]
-            columns=[data_Country])
+            ##staafdiagram = pd.DataFrame(
+            #data_Country = data[data['country'] == st.sidebar.selectbox("Welk land?", sorted(set(data.country))
+            #data.index = data.datum
+            #data_Country = data[data['country'] == current_land]
+            #data_Country = data_Country[data_Country.index > pd.Timestamp(2020,3,1)]
+            #columns=[data_Country])
 
-            st.bar_chart(staafdiagram)
+            #st.bar_chart(staafdiagram)
+        arr = np.random.normal(1, 1, size=100)
+        plt.hist(arr, bins=20)
+    
+        st.pyplot()
+           
 
      
 
