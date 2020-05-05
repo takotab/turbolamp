@@ -53,6 +53,7 @@ def main():
         
         (sorted(set(data.country))))
         st.write('Je hebt deze', options, 'geselecteerd')
+        #data_Country = data[data['country'] == options]
         f, ax = plt.subplots(figsize=(15, 20))
         
         staaf = sns.barplot(y="value", data=df_sum, x=options)
