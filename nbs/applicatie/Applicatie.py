@@ -49,10 +49,13 @@ def main():
             #st.bar_chart(staafdiagram)
         
 
+        options = st.multiselect('Welke landen?',
         
+        (sorted(set(data.country))))
+        st.write('Je hebt deze', options, 'geselecteerd')
         f, ax = plt.subplots(figsize=(15, 20))
         
-        staaf = sns.barplot(y="value", data=df_sum, x='country')
+        staaf = sns.barplot(y="value", data=df_sum, x=options)
         staaf.set_xticklabels(staaf.get_xticklabels(), rotation= 90)
         
         st.pyplot(f)
