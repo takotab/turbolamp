@@ -53,7 +53,7 @@ def main():
         
         (sorted(set(data.country))))
         st.write('Je hebt deze', options, 'geselecteerd')
-        new = data['country'].isin([options])
+        new = df_sum['country'].isin([options])
         #data_Country = data[data['country'] == options]
         f, ax = plt.subplots(figsize=(15, 20))
         
