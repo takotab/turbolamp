@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np 
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 def main():
     data = pd.read_csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv", 
@@ -18,6 +19,7 @@ def main():
     data_Country = data[data['country'] == current_land]
     data_Country = data_Country[data_Country.index > pd.Timestamp(2020,3,1)]
 
+    
     f, ax = plt.subplots(figsize=(10, 10))
     data_Country.value.plot(ax=ax)
     #for land in current_land:
@@ -27,6 +29,11 @@ def main():
         new_country = st.sidebar.selectbox(f"which other counrty{i}?", sorted(set(data.country)))   
         new_country
     
+    df_sum = data.groupby(['country']).sum()
+    df_sum = df_sum.reset_index()
+
+    df_sum
+
     f.legend()
     st.title("Corona Kaart")
     st.pyplot(f)
@@ -40,10 +47,15 @@ def main():
             #columns=[data_Country])
 
             #st.bar_chart(staafdiagram)
-        arr = np.random.normal(1, 1, size=100)
-        plt.hist(arr, bins=20)
-    
-        st.pyplot()
+        
+
+        
+        f, ax = plt.subplots(figsize=(15, 20))
+        
+        staaf = sns.barplot(y="value", data=df_sum, x='country')
+        staaf.set_xticklabels(staaf.get_xticklabels(), rotation= 90)
+        
+        st.pyplot(f)
            
 
      
