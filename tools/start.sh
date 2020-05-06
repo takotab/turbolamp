@@ -1,1 +1,1 @@
-streamlit run /nbs/applicatie/Applicatie.py
+streamlit run nbs/applicatie/Applicatie.py
